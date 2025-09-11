@@ -1,6 +1,30 @@
-# azure-pipelines.yml
+# NOTE: Please refer to https://aka.ms/azsdk/engsys/ci-yaml before editing this file.
+
 trigger:
-- main   # Adjust to your branch
+  branches:
+    include:
+    - main
+    - hotfix/*
+    - release/*
+    - restapi*
+  paths:
+    include:
+    - sdk/ml/
+    - scripts/
+    - sdk/core/
+
+pr:
+  branches:
+    include:
+    - main
+    - feature/*
+    - hotfix/*
+    - release/*
+    - restapi*
+  paths:
+    include:
+    - sdk/ml/
+    - sdk/core/
 
 pool:
   vmImage: 'macOS-latest'   # Options: macOS-14, macOS-13, macOS-12, macOS-latest
